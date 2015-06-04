@@ -1,0 +1,19 @@
+<table>
+  <tbody>
+    <tr>
+      <td style="width: 500px; height: 500px">
+        {{liquid-outlet}}
+      </td>
+      <td style="width: 300px;">
+        {{#each model.items as |item|}}
+          <div style="padding: 4px; clear: left;">
+            {{#link-to 'video' item.id.videoId}}
+              <img src={{item.snippet.thumbnails.default.url}} style="float: left;" data-video-id={{item.id.videoId}}>
+              {{item.snippet.title}}
+            {{/link-to}}
+          </div>
+        {{/each}}
+      </td>
+    </tr>
+  </tbody>
+</table>
