@@ -4,6 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'demo-app',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' wss://*.firebaseio.com" },
+    firebase: 'https://fi-youtuber.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
