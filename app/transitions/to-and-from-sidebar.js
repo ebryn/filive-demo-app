@@ -1,10 +1,10 @@
 export default function toAndFromSidebar(opts={}) {
   let flyTo = this.lookup('fly-to');
   return Promise.all([
-    flyTo.call({
-      oldElement: this.oldElement,
-      newElement: matchingThumbnail(this.oldElement)
-    }, { duration: opts.duration, movingSide: 'old' }),
+    // flyTo.call({
+    //   oldElement: this.oldElement,
+    //   newElement: matchingThumbnail(this.oldElement)
+    // }, { duration: opts.duration, movingSide: 'old' }),
     flyTo.call({
       oldElement: matchingThumbnail(this.newElement),
       newElement: this.newElement
