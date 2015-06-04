@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   didInsertElement() {
-    setTimeout(_ => {
+    this._loadingTimeout = setTimeout(_ => {
+      this._loadingTimeout = null;
       this._player = new YT.Player(this.elementId + '-player', {
         height: '390',
         width: '640',
@@ -17,5 +18,11 @@ export default Ember.Component.extend({
         }
       });
     }, 500);
+  },
+
+  willDestroyElement() {
+    if (this._loadingTimeout) {
+      clearTimeout(this._loadingTimeout);
+    }
   }
 });
