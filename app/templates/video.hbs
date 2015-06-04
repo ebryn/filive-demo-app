@@ -1,4 +1,4 @@
-{{#liquid-with model as |currentModel|}}
+{{#liquid-with model class='video-player' as |currentModel|}}
   <div style="height: 500px; width: 500px;">
     {{currentModel.snippet.title}}
     <img src={{currentModel.snippet.thumbnails.high.url}} data-video-id={{currentModel.id.videoId}}>
