@@ -35,7 +35,7 @@ function explodePiece(context, piece, seen) {
   var cleanupOld, cleanupNew;
 
   if (selectors[0] || selectors[1]) {
-    cleanupOld = _explodePart(context, 'oldElement', childContext, selectors[0], seen);
+    cleanupOld = _explodePart(context, 'parent', childContext, selectors[0], seen);
     cleanupNew = _explodePart(context, 'newElement', childContext, selectors[1], seen);
     if (!cleanupOld && !cleanupNew) {
       return Promise.resolve();
@@ -129,12 +129,11 @@ function matchAndExplode(context, piece, seen) {
     return Promise.resolve();
   }
 
-  var parent;
   if (piece.parentSelector) {
-    parent = context.oldElement.closest(piece.parentSelector);
+    context.parent = context.oldElement.closest(piece.parentSelector);
   } else {
     // TODO fugly
-    parent = context.oldElement
+    context.parent = context.oldElement
       .closest('.liquid-container')
       .parent()
       .closest('.liquid-container')
@@ -144,12 +143,12 @@ function matchAndExplode(context, piece, seen) {
 
   // reduce the matchBy scope
   if (piece.pick) {
-    parent = parent.find(piece.pick);
+    context.parent = context.parent.find(piece.pick);
     context.newElement = context.newElement.find(piece.pick);
   }
 
   if (piece.pickOld) {
-    parent = parent.find(piece.pickOld);
+    context.parent = context.parent.find(piece.pickOld);
   }
 
   if (piece.pickNew) {
@@ -167,7 +166,7 @@ function matchAndExplode(context, piece, seen) {
   }
 
   // TODO fugly
-  var hits = Ember.A(parent.find(piece.childSelector).toArray());
+  var hits = Ember.A(context.parent.find(piece.childSelector).toArray());
 
   return Promise.all(hits.map((elt) => {
     var attrValue = Ember.$(elt).attr(piece.matchBy);
