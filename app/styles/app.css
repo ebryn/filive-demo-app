@@ -53,3 +53,8 @@ body {
   margin-left: 1rem;
 }
 
+.video-player {
+    /* this is overriding a default style from liquid-fire, since we want
+       to let content fly in and out of the container.  */
+    overflow: visible;
+}

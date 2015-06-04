@@ -1,13 +1,13 @@
+let duration = 500;
+
 export default function(){
   this.transition(
-    // this.fromRoute('videos'),
-    // this.toRoute('video'),
-    this.use('explode-from-parent', {
-      matchBy: 'data-video-id',
-      parentSelector: '.layout',
-      childSelector: '.sidebar [data-video-id]',
-      use: ['fly-to', { duration: 300, easing: 'spring'}]
-    }),
-    this.debug()
+    this.hasClass('video-player'),
+    this.use('explode', {
+      pick: 'img',
+      use: ['to-and-from-sidebar', { duration }]
+    }, {
+      use: ['fade', { duration: duration/2 }]
+    })
   );
-};
+}
