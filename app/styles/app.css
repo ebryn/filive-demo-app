@@ -1,0 +1,55 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  background: #EEE;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 60rem;
+  height: 100vh;
+}
+
+.video {
+  position: relative;
+  flex-grow: 3;
+  height: 35%
+}
+
+.sidebar {
+  margin-left: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #DDD;
+  font-size: 0.75rem;
+  width: 20rem;
+  text-align: left;
+}
+
+.video-thumb {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.thumb {
+  flex-grow: 1;
+  min-width: 120px;
+  min-height: 90px;
+}
+
+.thumb-title {
+  font-size: 0.75rem;
+  margin-left: 1rem;
+}
+
