@@ -35,7 +35,7 @@ function explodePiece(context, piece, seen) {
   var cleanupOld, cleanupNew;
 
   if (selectors[0] || selectors[1]) {
-    cleanupOld = _explodePart(context, 'parent', childContext, selectors[0], seen);
+    cleanupOld = _explodePart(context, 'parent', childContext, piece.childSelector, seen);
     cleanupNew = _explodePart(context, 'newElement', childContext, selectors[1], seen);
     if (!cleanupOld && !cleanupNew) {
       return Promise.resolve();
@@ -75,6 +75,7 @@ function _explodePart(context, field, childContext, selector, seen) {
       if (elt.css('visibility') === 'hidden') {
         newChild.css({ visibility: 'hidden' });
       }
+
       newChild.appendTo(elt.parent());
       newChild.outerWidth(width);
       newChild.outerHeight(height);
@@ -177,6 +178,7 @@ function matchAndExplode(context, piece, seen) {
     }
 
     return explodePiece(context, {
+      childSelector: piece.childSelector,
       pick: selector(attrValue),
       use: piece.use
     }, seen);
