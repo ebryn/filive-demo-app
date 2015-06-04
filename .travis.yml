@@ -14,6 +14,12 @@ before_install:
   - "npm config set spin false"
   - "npm install -g npm@^2"
 
+before_script:
+    - ember sauce:connect
+
+after_script:
+    - ember sauce:disconnect
+
 install:
   - npm install -g bower
   - npm install
@@ -21,3 +27,9 @@ install:
 
 script:
   - npm test
+
+env:
+  global:
+    - SAUCE_USERNAME=filive-demo-ebryn
+    - SAUCE_ACCESS_KEY=35b8d099-203d-4766-ae12-eddf3a564eff
+
