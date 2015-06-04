@@ -1,6 +1,6 @@
 {{#liquid-with model class='video-player' as |currentModel|}}
   <div style="height: 500px; width: 500px;">
     {{!currentModel.snippet.title}}
-    {{youtube-player videoId=currentModel.id.videoId previewUrl=currentModel.snippet.thumbnails.default.url}}
+    {{youtube-player videoId=currentModel.id.videoId previewUrl=currentModel.snippet.thumbnails.high.url}}
   </div>
 {{/liquid-with}}

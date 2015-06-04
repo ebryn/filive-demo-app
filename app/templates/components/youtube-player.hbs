@@ -1,6 +1,6 @@
-{{#unless isLoaded}}
-  <img src={{previewUrl}} data-video-id={{videoId}} style="width: 640px; height: 390px;">
-{{/unless}}
-<div style="display: {{if isLoaded '' 'none'}}">
-  <div id="{{elementId}}-player"></div>
+<div style="position: relative">
+  <img src={{previewUrl}} data-video-id={{videoId}} style="width: 640px; height: 390px; position: absolute;">
+  <div style="position: absolute; display: {{if isLoaded '' 'none'}}">
+    <div id="{{elementId}}-player"></div>
+  </div>
 </div>

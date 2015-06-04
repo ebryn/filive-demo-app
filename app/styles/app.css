@@ -38,8 +38,9 @@ body {
 }
 
 .video-thumb {
-  display: flex;
-  margin-bottom: 1rem;
+  /*display: flex;*/
+  padding: 1rem 0;
+  clear: left;
 }
 
 .thumb {
