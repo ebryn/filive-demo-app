@@ -1,8 +1,10 @@
+/* globals YT */
+
 import Ember from 'ember';
 
 export default Ember.Component.extend({
   didInsertElement() {
-    this._loadingTimeout = setTimeout(_ => {
+    this._loadingTimeout = setTimeout(() => {
       this._loadingTimeout = null;
       this._player = new YT.Player(this.elementId + '-player', {
         height: '390',
@@ -13,7 +15,6 @@ export default Ember.Component.extend({
             this.set('isLoaded', true);
           },
           onStateChange: () => {
-            debugger;
           }
         }
       });
